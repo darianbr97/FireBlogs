@@ -11,14 +11,16 @@
 			shadow
 		"
 	>
-		<nav id="nav-container" class="w-full flex justify-between">
-			<div id="branding">
-				<router-link :to="{ name: 'home' }" class="text-3xl"
+		<nav class="w-full flex justify-between">
+			<div class="flex items-center">
+				<router-link
+					:to="{ name: 'home' }"
+					class="text-2xl font-semibold"
 					>FireBlogs</router-link
 				>
 			</div>
 			<div v-if="!state.mobileMode">
-				<ul id="nav-links">
+				<ul class="flex items-center">
 					<router-link to="#" class="p-3 uppercase">Home</router-link>
 					<router-link to="#" class="p-3 uppercase"
 						>Blogs</router-link
