@@ -1,10 +1,16 @@
 <template>
-	<div></div>
+	<div>
+		<BlogPost :post="state.welcomeScreen" />
+		<BlogPost />
+	</div>
 </template>
 
 <script>
+import BlogPost from "../components/BlogPost.vue"
 import { reactive } from '@vue/reactivity'
 export default {
+    name: 'Home',
+    components: { BlogPost },
     setup() {
         const state = reactive({
             welcomeScreen: {

@@ -21,14 +21,28 @@
 			</div>
 			<div v-if="!state.mobileMode">
 				<ul class="flex items-center">
-					<router-link to="#" class="p-3 uppercase">Home</router-link>
-					<router-link to="#" class="p-3 uppercase"
+					<router-link
+						to="#"
+						class="p-3 uppercase"
+						style="text-shadow: 0px 1px 0.5px gray"
+						>Home</router-link
+					>
+					<router-link
+						to="#"
+						class="p-3 uppercase"
+						style="text-shadow: 0px 1px 0.5px gray"
 						>Blogs</router-link
 					>
-					<router-link to="#" class="p-3 uppercase"
+					<router-link
+						to="#"
+						class="p-3 uppercase"
+						style="text-shadow: 0px 1px 0.5px gray"
 						>Create Post</router-link
 					>
-					<router-link to="#" class="p-3 uppercase"
+					<router-link
+						to="#"
+						class="p-3 uppercase"
+						style="text-shadow: 0px 1px 0.5px gray"
 						>Login/Register</router-link
 					>
 				</ul>
