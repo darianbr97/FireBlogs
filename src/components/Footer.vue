@@ -1,8 +1,7 @@
 <template>
 	<footer
 		class="
-			absolute
-			bottom-0
+			relative
 			w-full
 			h-40
 			p-6

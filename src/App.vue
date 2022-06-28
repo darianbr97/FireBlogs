@@ -1,7 +1,9 @@
 <template>
-	<Navigation />
-	<RouterView />
-	<Footer />
+	<div id="container" class="relative w-full h-full">
+		<Navigation />
+		<RouterView />
+		<Footer />
+	</div>
 </template>
 
 <script>

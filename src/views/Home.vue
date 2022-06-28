@@ -1,7 +1,11 @@
 <template>
 	<div>
 		<BlogPost :post="state.welcomeScreen" />
-		<BlogPost />
+		<BlogPost
+			v-for="(post, index) in state.sampleBlogPost"
+			:key="index"
+			:post="post"
+		/>
 	</div>
 </template>
 
@@ -15,9 +19,9 @@ export default {
         const state = reactive({
             welcomeScreen: {
                 title: "Welcome!",
-                blogPost: "Weekly blog articles with all programing including HTML, CSS, JavaScript and more. Register today to never miss...",
-                welcomeScreen:true,
-                photo: "coding",
+                blogHTML: "Weekly blog articles with all programing including HTML, CSS, JavaScript and more. Register today to never miss...",
+                blogCoverPhoto: "coding",
+                welcomeScreen: true,
             },
             sampleBlogPost: [
                 {
@@ -28,7 +32,7 @@ export default {
                 {
                     title: "This is a Filler Title!",
                     blogHTML: "This is a filler bog post title!",
-                    blogCoverPhoto: "beautiful-stories",
+                    blogCoverPhoto: "designed-for-everyone",
                 },
             ]
         })
