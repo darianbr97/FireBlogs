@@ -2,7 +2,7 @@
   <header
     class="relative w-full h-14 flex items-center justify-center px-4 shadow"
   >
-    <nav class="w-full flex justify-between">
+    <nav class="w-full flex justify-between xl:justify-around">
       <div class="flex items-center">
         <router-link :to="{ name: 'home' }" class="text-2xl font-semibold"
           >FireBlogs</router-link
