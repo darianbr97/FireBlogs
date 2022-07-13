@@ -18,6 +18,31 @@
         </div>
       </div>
     </div>
+    <div class="w-full p-10 flex flex-col justify-center items-center gap-5">
+      <h1 class="text-center text-2xl">
+        NEVER MISS A POST. REGISTER FOR YOUR FREE ACCOUNT TODAY!
+      </h1>
+      <router-link
+        to="#"
+        class="
+          flex
+          items-center
+          gap-2
+          bg-[#303030]
+          py-2
+          px-4
+          rounded-3xl
+          text-white text-xs
+          font-semibold
+          hover:scale-110
+        "
+        >REGISTER FOR FIREBLOGS
+        <img
+          src="../assets/Icons/arrow-right-light.svg"
+          alt="edit icon"
+          class="w-3 h-3 invert"
+      /></router-link>
+    </div>
   </div>
 </template>
 
