@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<BlogPost :post="state.welcomeScreen" />
+		<BlogPost :post="state.welcomeScreen" class="bg-gray-700 text-white"/>
 		<BlogPost
 			v-for="(post, index) in state.sampleBlogPost"
 			:key="index"
