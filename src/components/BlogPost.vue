@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="image-blog row-start-1 row-end-2 md:col-span-2 md:row-auto">
-      <img :src="putImage" alt="cover photo" class="w-full h-auto bg-cover" />
+      <img :src="putImage" alt="cover photo" class="w-full h-auto" />
     </div>
   </div>
 </template>
