@@ -14,23 +14,46 @@
   >
     <div class="absolute top-1 right-1 flex gap-3">
       <div
-        class="p-2 bg-white rounded-full shadow cursor-pointer hover:scale-110"
+        class="
+          w-8
+          h-8
+          bg-white
+          rounded-full
+          shadow
+          cursor-pointer
+          hover:bg-[#303030]
+        "
       >
-        <img
-          src="../assets/Icons/edit-regular.svg"
-          alt="edit icon"
-          class="w-4 h-4"
-        />
+        <div
+          class="w-full h-full flex justify-center items-center hover:invert"
+        >
+          <img
+            src="../assets/Icons/edit-regular.svg"
+            alt="edit icon"
+            class="w-4 h-4"
+          />
+        </div>
       </div>
       <div
-        class="p-2 bg-white rounded-full shadow cursor-pointer hover:scale-110"
-        hover:invert
+        class="
+          w-8
+          h-8
+          bg-white
+          rounded-full
+          shadow
+          cursor-pointer
+          hover:bg-[#303030]
+        "
       >
-        <img
-          src="../assets/Icons/trash-regular.svg"
-          alt="edit icon"
-          class="w-4 h-4"
-        />
+        <div
+          class="w-full h-full flex justify-center items-center hover:invert"
+        >
+          <img
+            src="../assets/Icons/trash-regular.svg"
+            alt="edit icon"
+            class="w-4 h-4"
+          />
+        </div>
       </div>
     </div>
     <img :src="picture" alt="blog picture" class="w-full h-auto rounded-t-md" />
