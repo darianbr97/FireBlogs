@@ -11,7 +11,7 @@
         <h2 class="text-2xl mb-2 pl-3">View More Recent Blogs</h2>
         <div class="w-full flex flex-wrap justify-center gap-4">
           <BlogCard
-            v-for="(post, index) in state.sampleBlogCards"
+            v-for="(post, index) in sampleBlogCards"
             :post="post"
             :key="index"
           />
@@ -50,10 +50,12 @@
 import BlogPost from "../components/BlogPost.vue";
 import { reactive } from "@vue/reactivity";
 import BlogCard from "../components/BlogCard.vue";
+import { useStore } from "../stores/store";
 export default {
   name: "Home",
   components: { BlogPost, BlogCard },
   setup() {
+    const store = useStore();
     const state = reactive({
       welcomeScreen: {
         title: "Welcome!",
@@ -74,31 +76,14 @@ export default {
           blogCoverPhoto: "designed-for-everyone",
         },
       ],
-      sampleBlogCards: [
-        {
-          blogTitle: "Blog Card #1",
-          blogCoverPhoto: "stock-1",
-          blogDate: "May 1, 2021",
-        },
-        {
-          blogTitle: "Blog Card #2",
-          blogCoverPhoto: "stock-2",
-          blogDate: "May 1, 2021",
-        },
-        {
-          blogTitle: "Blog Card #3",
-          blogCoverPhoto: "stock-3",
-          blogDate: "May 1, 2021",
-        },
-        {
-          blogTitle: "Blog Card #4",
-          blogCoverPhoto: "stock-4",
-          blogDate: "May 1, 2021",
-        },
-      ],
     });
 
-    return { state };
+    return { state, store };
+  },
+  computed: {
+    sampleBlogCards() {
+      return this.store.sampleBlogCards;
+    },
   },
 };
 </script>
