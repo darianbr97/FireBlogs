@@ -22,7 +22,7 @@
       "
     >
       <div
-        class="w-[50%] h-[50%] flex flex-col justify-center items-center gap-4"
+        class="w-[70%] h-[70%] flex flex-col justify-center items-center gap-4"
       >
         <h2 class="text-4xl">{{ post.title }}</h2>
         <p>{{ post.blogHTML }}</p>
