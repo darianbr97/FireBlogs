@@ -11,13 +11,13 @@
       <div v-if="!state.mobileMode">
         <ul class="flex items-center">
           <router-link
-            to="#"
+            to="/"
             class="p-3 uppercase"
             style="text-shadow: 0px 1px 0.5px gray"
             >Home</router-link
           >
           <router-link
-            to="#"
+            to="/blogs"
             class="p-3 uppercase"
             style="text-shadow: 0px 1px 0.5px gray"
             >Blogs</router-link
@@ -59,8 +59,8 @@
           bg-gray-800
         "
       >
-        <router-link to="#" class="text-white p-2">Home</router-link>
-        <router-link to="#" class="text-white p-2">Blogs</router-link>
+        <router-link to="/" class="text-white p-2">Home</router-link>
+        <router-link to="/blogs" class="text-white p-2">Blogs</router-link>
         <router-link to="#" class="text-white p-2">Create Post</router-link>
         <router-link to="#" class="text-white p-2">Login/Register</router-link>
       </ul>
