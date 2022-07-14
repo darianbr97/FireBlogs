@@ -12,7 +12,7 @@
       hover:-rotate-2 hover:shadow-xl
     "
   >
-    <div class="absolute top-1 right-1 flex gap-3">
+    <div v-show="editPost" class="absolute top-1 right-1 flex gap-3">
       <div
         class="
           w-8
@@ -64,23 +64,41 @@
       </div>
       <router-link
         to="#"
-        class="absolute bottom-4 flex items-center gap-2 text-xs font-semibold"
+        class="
+          absolute
+          bottom-4
+          flex
+          items-center
+          gap-2
+          text-xs
+          font-semibold
+          hover:scale-110
+        "
         >VIEW THE POST
         <img
           src="../assets/Icons/arrow-right-light.svg"
           alt="arrow icon"
-          class="w-4 h-4 rounded-t-md"
+          class="w-3 h-3 rounded-t-md"
       /></router-link>
     </div>
   </article>
 </template>
 
 <script>
+import { useStore } from "../stores/store";
 export default {
   props: ["post"],
+  setup() {
+    const store = useStore();
+
+    return { store };
+  },
   computed: {
     picture({ post }) {
       return `./src/assets/blogCards/${post.blogCoverPhoto}.jpg`;
+    },
+    editPost() {
+      return this.store.editPost;
     },
   },
 };
