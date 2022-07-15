@@ -28,7 +28,7 @@
         <p>{{ post.blogHTML }}</p>
         <router-link
           v-if="post.welcomeScreen"
-          to="#"
+          :to="{ name: 'Login' }"
           class="
             flex
             items-center
