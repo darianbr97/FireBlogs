@@ -52,7 +52,7 @@ import { reactive } from "@vue/reactivity";
 import BlogCard from "../components/BlogCard.vue";
 import { useStore } from "../stores/store";
 export default {
-  name: "Home",
+  name: "home",
   components: { BlogPost, BlogCard },
   setup() {
     const store = useStore();
