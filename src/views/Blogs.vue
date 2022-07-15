@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { onUnmounted } from "@vue/runtime-core";
 import BlogCard from "../components/BlogCard.vue";
 import ToggleEditBtn from "../components/ToggleEditBtn.vue";
 import { useStore } from "../stores/store";
@@ -24,6 +25,8 @@ export default {
   components: { BlogCard, ToggleEditBtn },
   setup() {
     const store = useStore();
+
+    onUnmounted(() => (store.editPost = false));
 
     return { store };
   },
