@@ -12,26 +12,22 @@
         <ul class="flex items-center">
           <router-link
             :to="{ name: 'home' }"
-            class="p-3 uppercase"
-            style="text-shadow: 0px 1px 0.5px gray"
+            class="p-3 uppercase hover:text-green-400 font-semibold"
             >Home</router-link
           >
           <router-link
             :to="{ name: 'blogs' }"
-            class="p-3 uppercase"
-            style="text-shadow: 0px 1px 0.5px gray"
+            class="p-3 uppercase hover:text-green-400 font-semibold"
             >Blogs</router-link
           >
           <router-link
             to="#"
-            class="p-3 uppercase"
-            style="text-shadow: 0px 1px 0.5px gray"
+            class="p-3 uppercase hover:text-green-400 font-semibold"
             >Create Post</router-link
           >
           <router-link
-            to="#"
-            class="p-3 uppercase"
-            style="text-shadow: 0px 1px 0.5px gray"
+            :to="{ name: 'Login' }"
+            class="p-3 uppercase hover:text-green-400 font-semibold"
             >Login/Register</router-link
           >
         </ul>
@@ -67,7 +63,9 @@
           >Blogs</router-link
         >
         <router-link to="#" class="text-white p-2">Create Post</router-link>
-        <router-link to="#" class="text-white p-2">Login/Register</router-link>
+        <router-link :to="{ name: 'Login' }" class="text-white p-2"
+          >Login/Register</router-link
+        >
       </ul>
     </transition>
   </header>
