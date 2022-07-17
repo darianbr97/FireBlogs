@@ -2,7 +2,7 @@
   <div class="w-full h-screen flex overflow-hidden">
     <div class="w-full h-full flex justify-center items-center bg-white">
       <form
-        @submit.prevent=""
+        @submit.prevent="register"
         class="w-[390px] sm:w-[490px] flex flex-col justify-center items-center"
       >
         <p class="text-base font-semibold mb-6">
@@ -19,7 +19,7 @@
             <input
               type="text"
               placeholder="First Name"
-              v-model="firstName"
+              v-model="state.firstName"
               class="
                 w-full
                 p-2
@@ -39,7 +39,7 @@
             <input
               type="text"
               placeholder="Second Name"
-              v-model="secondName"
+              v-model="state.lastName"
               class="
                 w-full
                 p-2
@@ -59,7 +59,7 @@
             <input
               type="text"
               placeholder="User Name"
-              v-model="userName"
+              v-model="state.userName"
               class="
                 w-full
                 p-2
@@ -79,7 +79,7 @@
             <input
               type="email"
               placeholder="Email"
-              v-model="email"
+              v-model="state.email"
               class="
                 w-full
                 p-2
@@ -99,7 +99,7 @@
             <input
               type="password"
               placeholder="Password"
-              v-model="password"
+              v-model="state.password"
               class="
                 w-full
                 p-2
@@ -116,6 +116,9 @@
             />
           </div>
         </div>
+        <p v-if="state.error" class="text-red-500 text-sm font-semibold mb-4">
+          {{ state.errorMsg }}
+        </p>
         <input
           type="submit"
           value="SIGN UP"
@@ -155,18 +158,75 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { reactive } from "@vue/reactivity";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from "../firebase/firebaseInit";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore/lite";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Register",
   setup() {
-    const email = ref("");
-    const password = ref("");
-    const firstName = ref("");
-    const secondName = ref("");
-    const userName = ref("");
+    const router = useRouter();
+    const state = reactive({
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      userName: "",
+      error: false,
+      errorMsg: "",
+    });
 
-    return { email, password, firstName, secondName, userName };
+    const register = async () => {
+      if (
+        state.email !== "" &&
+        state.password !== "" &&
+        state.firstName !== "" &&
+        state.lastName !== "" &&
+        state.userName !== ""
+      ) {
+        state.error = false;
+        state.errorMsg = "";
+
+        try {
+          const auth = await getAuth();
+          const createUser = await createUserWithEmailAndPassword(
+            auth,
+            state.email,
+            state.password
+          );
+          //   const dataBase = await addDoc(collection(db, "users"), {
+          //     firstName: state.firstName,
+          //     lastName: state.lastName,
+          //     userName: state.userName,
+          //     email: state.email,
+          //   });
+
+          const userCredential = await createUser.user;
+          const dataBase = doc(db, "users", userCredential.uid);
+          await setDoc(dataBase, {
+            firstName: state.firstName,
+            lastName: state.lastName,
+            userName: state.userName,
+            email: state.email,
+          });
+
+          router.push({ name: "home" });
+        } catch (err) {
+          console.log(err.code);
+          console.log(err.message);
+        }
+
+        return;
+      }
+
+      state.error = true;
+      state.errorMsg = "Please fill out all the fields!";
+      return;
+    };
+
+    return { state, register };
   },
 };
 </script>
