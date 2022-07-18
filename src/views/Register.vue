@@ -116,7 +116,7 @@
             />
           </div>
         </div>
-        <p v-if="state.error" class="text-red-500 text-sm font-semibold mb-4">
+        <p v-show="state.error" class="text-red-500 text-sm font-semibold mb-4">
           {{ state.errorMsg }}
         </p>
         <input
