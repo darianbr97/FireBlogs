@@ -26,10 +26,28 @@
             >Create Post</router-link
           >
           <router-link
+            v-if="!store.user"
             :to="{ name: 'Login' }"
             class="p-3 uppercase hover:text-green-400 font-semibold"
             >Login/Register</router-link
           >
+          <div class="relative">
+            <span
+              @click="state.showUserMenu = !state.showUserMenu"
+              v-if="store.user"
+              class="
+                p-2
+                bg-slate-800
+                rounded-full
+                text-white text-sm
+                font-semibold
+                select-none
+                shadow-lg
+              "
+              >{{ store.profileInitials }}</span
+            >
+            <UserMenu v-if="state.showUserMenu" />
+          </div>
         </ul>
       </div>
     </nav>
@@ -63,7 +81,10 @@
           >Blogs</router-link
         >
         <router-link to="#" class="text-white p-2">Create Post</router-link>
-        <router-link :to="{ name: 'Login' }" class="text-white p-2"
+        <router-link
+          v-if="!store.user"
+          :to="{ name: 'Login' }"
+          class="text-white p-2"
           >Login/Register</router-link
         >
       </ul>
@@ -75,12 +96,15 @@
 import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "../stores/store";
+import UserMenu from "../components/UserMenu.vue";
 export default {
+  components: { UserMenu },
   setup() {
     const store = useStore();
     const state = reactive({
       mobileMode: null,
       mobileNav: null,
+      showUserMenu: false,
     });
 
     onMounted(() => {
@@ -102,7 +126,7 @@ export default {
       state.mobileNav = !state.mobileNav;
     }
 
-    return { state, toggleMobileNav };
+    return { state, store, toggleMobileNav };
   },
 };
 </script>
