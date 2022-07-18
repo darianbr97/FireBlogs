@@ -8,9 +8,15 @@
     <Loading v-if="state.loading" />
     <div class="w-full h-full flex justify-center items-center bg-white">
       <form
-        @submit.prevent=""
+        @submit.prevent="resetPassword"
         class="w-[390px] sm:w-[490px] flex flex-col justify-center items-center"
       >
+        <p class="text-center text-base font-semibold mb-4">
+          Back to
+          <router-link :to="{ name: 'Login' }" class="underline"
+            >Login</router-link
+          >
+        </p>
         <h2 class="text-[30px] sm:text-[40px] font-bold">Reset Password</h2>
         <p class="text-center text-xs font-semibold mb-6">
           Forgot your password? Enter your email to reset it
@@ -79,6 +85,7 @@
 import { reactive, ref } from "@vue/reactivity";
 import Modal from "../components/Modal.vue";
 import Loading from "../components/Loading.vue";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 export default {
   components: { Modal, Loading },
   setup() {
@@ -94,7 +101,31 @@ export default {
       state.email = "";
     }
 
-    return { state, closeModal };
+    function resetPassword() {
+      if (state.email !== "") {
+        state.error = true;
+        state.errorMsg = "";
+        state.loading = true;
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, state.email)
+          .then(() => {
+            state.msgModal = "If your account exists, you will receive a email";
+            state.loading = false;
+            state.activeModal = true;
+          })
+          .catch((err) => {
+            state.loading = false;
+            state.msgModal = err.message;
+            state.activeModal = true;
+          });
+        return;
+      }
+      state.error = true;
+      state.errorMsg = "Please fill out all the fields!";
+      return;
+    }
+
+    return { state, closeModal, resetPassword };
   },
 };
 </script>
