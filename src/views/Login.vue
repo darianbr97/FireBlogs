@@ -1,8 +1,9 @@
 <template>
   <div class="w-full h-screen flex overflow-hidden">
+    <Loading v-if="state.loading" />
     <div class="w-full h-full flex justify-center items-center bg-white">
       <form
-        @submit.prevent=""
+        @submit.prevent="signIn"
         class="w-[390px] sm:w-[490px] flex flex-col justify-center items-center"
       >
         <p class="text-base font-semibold mb-6">
@@ -19,7 +20,7 @@
             <input
               type="email"
               placeholder="Email"
-              v-model="email"
+              v-model="state.email"
               class="
                 w-full
                 p-2
@@ -39,7 +40,7 @@
             <input
               type="password"
               placeholder="Password"
-              v-model="password"
+              v-model="state.password"
               class="
                 w-full
                 p-2
@@ -56,6 +57,9 @@
             />
           </div>
         </div>
+        <p v-show="state.error" class="text-red-500 text-sm font-semibold mb-4">
+          {{ state.errorMsg }}
+        </p>
         <router-link
           :to="{ name: 'ForgotPassword' }"
           class="text-base font-semibold mb-6 hover:underline"
@@ -100,14 +104,48 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { reactive } from "@vue/reactivity";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "vue-router";
+import Loading from "../components/Loading.vue";
 export default {
   name: "Login",
+  components: { Loading },
   setup() {
-    const email = ref("");
-    const password = ref("");
+    const router = useRouter();
+    const state = reactive({
+      loading: false,
+      email: "",
+      password: "",
+      error: false,
+      errorMsg: "",
+    });
 
-    return { email, password };
+    function signIn() {
+      if (state.email !== "" && state.password !== "") {
+        state.loading = true;
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, state.email, state.password)
+          .then((userCredential) => {
+            state.loading = false;
+            state.error = false;
+            state.errorMsg = "";
+            router.push({ name: "home" });
+            console.log("user uid:", userCredential.user.uid);
+          })
+          .catch((err) => {
+            state.loading = false;
+            state.error = true;
+            state.errorMsg = err.message;
+          });
+        return;
+      }
+      state.error = true;
+      state.errorMsg = "Please fill out all the fields!";
+      return;
+    }
+
+    return { state, signIn };
   },
 };
 </script>
