@@ -4,6 +4,8 @@ import Blogs from "../views/Blogs.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
+import Profile from "../views/Profile.vue";
+import Administration from "../views/Administration.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +48,22 @@ const router = createRouter({
             component: ForgotPassword,
             meta: {
                 title: "Forgot Password"
+            }
+        },
+        {
+            path: "/profile",
+            name: "Profile",
+            component: Profile,
+            meta: {
+                title: "Profile"
+            }
+        },
+        {
+            path: "/administration",
+            name: "Administration",
+            component: Administration,
+            meta: {
+                title: "Administration"
             }
         },
     ],
