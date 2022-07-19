@@ -161,7 +161,7 @@
 import { reactive } from "@vue/reactivity";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase/firebaseInit";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore/lite";
+import { setDoc, doc } from "firebase/firestore/lite";
 import { useRouter } from "vue-router";
 
 export default {
@@ -196,12 +196,6 @@ export default {
             state.email,
             state.password
           );
-          //   const dataBase = await addDoc(collection(db, "users"), {
-          //     firstName: state.firstName,
-          //     lastName: state.lastName,
-          //     userName: state.userName,
-          //     email: state.email,
-          //   });
 
           const userCredential = await createUser.user;
           const dataBase = doc(db, "users", userCredential.uid);
