@@ -12,7 +12,7 @@
       hover:-rotate-2 hover:shadow-xl
     "
   >
-    <div v-show="editPost" class="absolute top-1 right-1 flex gap-3">
+    <div v-show="editPost" class="absolute z-20 top-1 right-1 flex gap-3">
       <div
         class="
           w-8
