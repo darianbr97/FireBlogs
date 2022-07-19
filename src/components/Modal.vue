@@ -15,7 +15,7 @@
     <div
       class="
         w-[250px]
-        h-[180px]
+        min-h-[140px]
         bg-white
         shadow
         rounded-md
