@@ -42,13 +42,17 @@
       </div>
       <div>
         <ul class="flex md:flex-col px-10">
-          <router-link to="#" class="p-1 uppercase text-sm text-white"
+          <router-link
+            :to="{ name: 'home' }"
+            class="p-1 uppercase text-sm text-white"
             >Home</router-link
           >
           <router-link to="#" class="p-1 uppercase text-sm text-white"
             >Blogs</router-link
           >
-          <router-link to="#" class="p-1 uppercase text-sm text-white"
+          <router-link
+            :to="{ name: 'Login' }"
+            class="p-1 uppercase text-sm text-white"
             >Login/Register</router-link
           >
         </ul>
