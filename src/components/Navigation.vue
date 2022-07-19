@@ -31,12 +31,13 @@
             class="p-3 uppercase hover:text-green-400 font-semibold"
             >Login/Register</router-link
           >
-          <div class="relative">
+          <div v-if="isLogin" class="relative">
             <span
               @click="state.showUserMenu = !state.showUserMenu"
               v-if="store.user"
               class="
-                p-2
+                px-2
+                py-[10px]
                 bg-slate-800
                 rounded-full
                 text-white text-sm
@@ -46,7 +47,7 @@
               "
               >{{ store.profileInitials }}</span
             >
-            <UserMenu v-if="state.showUserMenu" />
+            <ProfileMenu v-if="state.showUserMenu" />
           </div>
         </ul>
       </div>
@@ -96,9 +97,9 @@
 import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "../stores/store";
-import UserMenu from "../components/UserMenu.vue";
+import ProfileMenu from "../components/ProfileMenu.vue";
 export default {
-  components: { UserMenu },
+  components: { ProfileMenu },
   setup() {
     const store = useStore();
     const state = reactive({
@@ -127,6 +128,11 @@ export default {
     }
 
     return { state, store, toggleMobileNav };
+  },
+  computed: {
+    isLogin() {
+      return this.store.user;
+    },
   },
 };
 </script>
