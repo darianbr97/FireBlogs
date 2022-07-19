@@ -1,6 +1,10 @@
 <template>
   <div class="w-full">
-    <BlogPost :post="state.welcomeScreen" class="bg-gray-700 text-white" />
+    <BlogPost
+      v-if="!user"
+      :post="state.welcomeScreen"
+      class="bg-gray-700 text-white"
+    />
     <BlogPost
       v-for="(post, index) in state.sampleBlogPost"
       :key="index"
@@ -23,7 +27,7 @@
         NEVER MISS A POST. REGISTER FOR YOUR FREE ACCOUNT TODAY!
       </h1>
       <router-link
-        to="#"
+        :to="{ name: 'Register' }"
         class="
           flex
           items-center
@@ -83,6 +87,9 @@ export default {
   computed: {
     sampleBlogCards() {
       return this.store.sampleBlogCards;
+    },
+    user() {
+      return this.store.user;
     },
   },
 };
