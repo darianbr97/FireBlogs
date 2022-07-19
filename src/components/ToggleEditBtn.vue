@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute w-full flex justify-end">
+  <div class="absolute z-20 w-full flex justify-end">
     <div class="w-[104px] flex items-center justify-between mr-8">
       <span class="font-semibold">Edit Post</span>
       <div class="w-8 h-4 shadow rounded-3xl bg-white">
