@@ -5,7 +5,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import Profile from "../views/Profile.vue";
-import Administration from "../views/Administration.vue";
+import CreatePost from "../views/CreatePost.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,11 +59,11 @@ const router = createRouter({
             }
         },
         {
-            path: "/administration",
-            name: "Administration",
-            component: Administration,
+            path: "/create-post",
+            name: "CreatePost",
+            component: CreatePost,
             meta: {
-                title: "Administration"
+                title: "Create Post"
             }
         },
     ],

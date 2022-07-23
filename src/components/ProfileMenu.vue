@@ -18,6 +18,7 @@
     <div
       class="
         absolute
+        min-w-[170px]
         z-50
         right-0
         mt-4
@@ -68,17 +69,7 @@
           />
           Profile
         </router-link>
-        <router-link
-          :to="{ name: 'Administration' }"
-          class="flex items-center gap-3 text-white hover:opacity-70"
-        >
-          <img
-            class="w-4 h-4 invert"
-            src="../assets/Icons/user-crown-light.svg"
-            alt="admin icon"
-          />
-          Admin
-        </router-link>
+
         <button
           @click.stop="signOutSession"
           class="flex items-center gap-3 text-white hover:opacity-70"

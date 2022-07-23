@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="container"
-    class="relative w-full min-h-screen flex flex-col overflow-hidden"
-  >
+  <div class="relative w-full min-h-screen flex flex-col">
     <Navigation v-if="NavFootEnabled" />
     <RouterView />
     <Footer v-if="NavFootEnabled" />
@@ -15,6 +12,8 @@ import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
 import { ref, watch } from "@vue/runtime-core";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { doc, getDoc } from "firebase/firestore/lite";
+import { db } from "./firebase/firebaseInit";
 import { useStore } from "./stores/store";
 export default {
   name: "App",
@@ -23,6 +22,7 @@ export default {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       this.store.user = user;
+      console.log(user);
       if (this.store.user) {
         this.store.getCurrentUser();
       }

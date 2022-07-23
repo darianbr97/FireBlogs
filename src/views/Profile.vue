@@ -45,27 +45,6 @@
           >{{ store.profileInitials }}
         </span>
       </div>
-      <router-link
-        :to="{ name: 'Administration' }"
-        class="
-          flex
-          items-center
-          justify-around
-          gap-1
-          px-4
-          py-1
-          bg-slate-800
-          text-gray-200
-          rounded-md
-          hover:opacity-90
-        "
-        ><img
-          src="../assets/Icons/user-crown-light.svg"
-          alt="admin icon"
-          class="w-3 h-3 invert"
-        />
-        Admin</router-link
-      >
       <div class="w-[90%]">
         <span class="text-sm font-semibold">First Name:</span>
         <input

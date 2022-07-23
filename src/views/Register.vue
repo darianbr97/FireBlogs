@@ -199,14 +199,14 @@ export default {
 
           const userCredential = await createUser.user;
           const dataBase = doc(db, "users", userCredential.uid);
-          await setDoc(dataBase, {
+          setDoc(dataBase, {
             firstName: state.firstName,
             lastName: state.lastName,
             userName: state.userName,
             email: state.email,
+          }).then(() => {
+            router.push({ name: "home" });
           });
-
-          router.push({ name: "home" });
         } catch (err) {
           console.log(err.code);
           console.log(err.message);

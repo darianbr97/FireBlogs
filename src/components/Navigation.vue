@@ -21,7 +21,8 @@
             >Blogs</router-link
           >
           <router-link
-            to="#"
+            v-if="store.user"
+            :to="{ name: 'CreatePost' }"
             class="p-3 uppercase hover:text-green-400 font-semibold"
             >Create Post</router-link
           >
@@ -81,9 +82,14 @@
         <router-link :to="{ name: 'blogs' }" class="text-white p-2"
           >Blogs</router-link
         >
-        <router-link to="#" class="text-white p-2">Create Post</router-link>
         <router-link
-          v-if="!store.user"
+          v-show="store.user"
+          :to="{ name: 'CreatePost' }"
+          class="text-white p-2"
+          >Create Post</router-link
+        >
+        <router-link
+          v-show="!store.user"
           :to="{ name: 'Login' }"
           class="text-white p-2"
           >Login/Register</router-link
